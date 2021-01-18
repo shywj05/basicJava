@@ -4,7 +4,7 @@ public class Subak {
 
 	public static void main(String[] args) {
 		Solution so = new Solution();
-
+		
 		String result = so.solution(5);
 		System.out.println(result);
 	}
