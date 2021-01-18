@@ -18,7 +18,7 @@ class Solution {
 		String[] subak = {};
 
 		for (int i = 0; i < n; i++) {
-			
+			sdfsdf
 			answer += subak[i];
 		}
 
