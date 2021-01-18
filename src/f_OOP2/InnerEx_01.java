@@ -10,7 +10,7 @@ public class InnerEx_01 {
 		
 		InnerEx_01.InstanceInner ii = ie.new InstanceInner(); 
 		
-	}
+	} 
 
 	static class StaticInner {
 		static int cv = 300;
