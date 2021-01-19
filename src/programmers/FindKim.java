@@ -4,7 +4,7 @@ public class FindKim {
 
 	public static void main(String[] args) {
 		SeoulKim sk = new SeoulKim();
-		String result = sk.solution(null);
+		String result = sk.solution(new String[] {"Jane","Kim"});
 		System.out.println(result);
 	}
 
