@@ -29,6 +29,7 @@ public class ProductTest_01 {
 
 		// summary
 		hogang.summary();
+
 	}
 }
 
@@ -148,11 +149,11 @@ class Buyer {
 		System.out.println("\t영\t수\t증");
 		System.out.println();
 		System.out.println("구매내역");
-		
-		
+
 		int sum = 0;
 		for (int i = 0; i < item.size(); i++) {
-			Product pro = (Product) item.get(i);//object 이기 때문에 Product로 다운캐스팅 해야된다
+			Product pro = (Product) item.get(i);// object 이기 때문에 Product로 다운캐스팅
+												// 해야된다
 			System.out.println(pro.name + " : " + pro.price);
 			sum += pro.price;
 		}
@@ -176,27 +177,27 @@ class Buyer {
 			System.out.println("구매이력이 없습니다. 환불이 불가합니다.");
 			return;
 		}
-		
-		
-		
-//		if(item.remove(p)){//true   ===== remove 가 for문도 다 돌려준다 그래서 for문이 필요없어진다
-//			//반납
-//			money += p.price;
-//			mileage -= p.price;
-//			System.out.println(p+"를 반납했스비나");
-//			
-//		}else{
-//			System.out.println("해당 물품 구매 내역이 없다");
-//		}
-		
+
+		// if(item.remove(p)){//true ===== remove 가 for문도 다 돌려준다 그래서 for문이
+		// 필요없어진다
+		// //반납
+		// money += p.price;
+		// mileage -= p.price;
+		// System.out.println(p+"를 반납했스비나");
+		//
+		// }else{
+		// System.out.println("해당 물품 구매 내역이 없다");
+		// }
 
 		if (item.contains(p)) {
 			System.out.println("환불진행합니다.");
 			money += p.price;
 			mileage -= p.mileage;
 			item.remove(p);
-			System.out.println(this.name + "님의 환불 제품 : "+ p +  ", 총 환불 금액 : " + p.price);
-			System.out.println("환불 후 고객님의 잔고는 : " + money + ", 마일리지는 : " + mileage);
+			System.out.println(this.name + "님의 환불 제품 : " + p + ", 총 환불 금액 : "
+					+ p.price);
+			System.out.println("환불 후 고객님의 잔고는 : " + money + ", 마일리지는 : "
+					+ mileage);
 			return;
 		}
 		System.out.println("구매이력이 없습니다. 환불이 불가합니다.");
@@ -205,43 +206,45 @@ class Buyer {
 
 }
 
-//구매내역이 필요하다 아래 거 하려면( 사람들 ,물건들, 구매역)
-class Sale{
+// 구매내역이 필요하다 아래 거 하려면( 사람들 ,물건들, 구매역)
+class Sale {
 	static int seq = 1;
-	int mount;
-	String date;
-	String mem_name;
-	String pro_name;
-	
+	int mount; // 갯수? 재고
+	String date; // 구매날짜
+	String mem_name; // 회원이름
+	String pro_name; // 상품이름
+
+	Vector sale = new Vector();
+
+	public void ss(int mount, String data, String mem_name, String pro_name) {
+		this.mount = mount;
+		this.date = data;
+		this.mem_name = mem_name;
+		this.pro_name = pro_name;
+	}
 }
 
-class DBClass{
-	//1. 사람들 관리
-	Vector<Buyer> buyers = new Vector<>();//와일드 카드라는 녀석이라고??때에 따라 알아서 바뀌는 거래
-	
-	//2. 물건들 관리
-	Vector<Product> products = new Vector<>();
-	
-	//3. 구매내역
-	Vector<Sale> sale = new Vector<>();
-	
-	
-	public boolean addBuyer(Buyer b){
+class DBClass {
+
+	public boolean addBuyer(Buyer b) {
 		boolean result = buyers.add(b);
 		return result;
-		
+
 	}
-	
-	
-	
-	
-	
-	
+
+	// 1. 사람들 관리 - 사람 이름, 사람 고유번호 id, 사람 마일리지, 사람들 자금
+	Vector<Buyer> buyers = new Vector<>();// 와일드 카드라는 녀석이라고??때에 따라 알아서 바뀌는 거래
+
+	// 메서드하나 만들어 바이어의 정보를 가지고 있는
+	void man(Buyer b) {
+		Buyer buy = buyers.get(0);
+		System.out.println(buy);
+	}
+
+	// 2. 물건들 관리
+	Vector<Product> products = new Vector<>();
+
+	// 3. 구매내역
+	Vector<Sale> sale = new Vector<>();
+
 }
-
-
-
-
-
-
-
