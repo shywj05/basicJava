@@ -6,46 +6,61 @@ public class ProductTest_01 {
 	public static void main(String[] args) {
 
 		/**
-		c의 주소 안에 매개변수 2개가 있는 Computer생성자 인자값을 대입
-		부모 클레스 안의 인스턴스 초기화 주소값 나머지 다 동일
+		 * c의 주소 안에 매개변수 2개가 있는 Computer생성자 인자값을 대입 부모 클레스 안의 인스턴스 초기화 주소값 나머지 다
+		 * 동일
 		 */
 		Computer c = new Computer(80, "좋은컴퓨터");
 		HandPhone h = new HandPhone(500, "좋은핸드폰");
 		Styler s = new Styler(480, "좋은스타일러");
-		Buyer hogang = new Buyer("호갱", 1000);
 		
-
-		hogang.buy(s);
-		hogang.buy(h);
-		hogang.buy(s);
-		hogang.buy(h);
-		hogang.buy(c);
-
-		
-		System.out.println(hogang.item);
-
-		// summary
-		hogang.summary();
-
-		// refund
-		hogang.refund(s);
-
-		// summary
-		hogang.summary();
-		
+		Buyer customer = new Buyer("손님1", 1000);
+		Buyer customer2 = new Buyer("손님2", 1000);
 		
 		DBClass db = new DBClass();
-		//생성자를 콜스택에 로드시켜
-		
-		boolean result = db.addBuyer(hogang);
-		//메서드를 호출하는 거지 db(주소로 이동). addBuyer(hogang)(db의 주소안에 있는 매개변수 하나의 매서드)
-		//인자값으로 hogang을 준 건 타입이 buyer이기 때문에
-		System.out.println(result);
-		
-		Sale sa = new Sale();
-		
-		hogang.syso();
+		// 생성자를 콜스택에 로드시켜
 
+		customer.buy(s);
+		customer.buy(h);
+		customer.buy(s);
+		customer.buy(h);
+		customer.buy(c);
+
+		System.out.println(customer.item);
+
+		// summary
+		customer.summary();
+
+		// refund
+		customer.refund(s);
+
+		// summary
+		customer.summary();
+
+		db.addBuyer(customer);
+		db.addBuyer(customer2);
+		db.Customers();
+
+		// 메서드를 호출하는 거지 db(주소로 이동). addBuyer(coustomer)(db의 주소안에 있는 매개변수 하나의 매서드)
+		// 인자값으로 customer을 준 건 타입이 buyer이기 때문에
+
+		Sale sa = new Sale();
+
+//		{ //초기화블럭
+//			Buyer customer = new Buyer();
+//			customer.setName("손님1");
+//			customer.setMoney(1000);
+//			db.buyers.add(customer);
+//			
+//			Buyer customer1 = new Buyer();
+//			customer1.setName("손님2");
+//			customer1.setMoney(1000);
+//			db.buyers.add(customer1);
+//			
+//			Buyer customer2 = new Buyer();
+//			customer2.setName("손님2");
+//			customer2.setMoney(1000);
+//			db.buyers.add(customer2);
+//		}
 	}
 }
 
@@ -103,8 +118,6 @@ class Buyer {
 	int mileage;
 
 	Vector<Product> item = new Vector<Product>();// 구매내역 저장
-	void syso(){
-	}
 
 	public Buyer(String name, int money) {
 		this.name = name;
@@ -136,7 +149,7 @@ class Buyer {
 		money -= p.price;
 		mileage += p.mileage;
 		item.add(p); // 업캐스팅해서 오브젝트에 넣는다
-		System.out.println(p.toString());
+		System.out.println("주소값을 문자열로 " + p.toString());
 
 	}
 
@@ -242,32 +255,40 @@ class Sale {
 	}
 }
 
-// 1. 사람들 관리 - 사람 이름, 사람 고유번호 id, 사람 마일리지, 사람들 자금
 class DBClass {
-	
-	String name;
-	int id;
-	int mileage;
-	int money;
-	
-	Vector<Buyer> buyers = new Vector<>();// 와일드 카드라는 녀석이라고??때에 따라 알아서 바뀌는 거래
-	//여기서 <타입> ==> Buyer니까 객체의 묶음이 들어오겠구만
-	//Vector에 값을 추가하려면 buyers.add(~~) 이런식! 
-	//Vector에 값을 제거하려면 buyers.remove(~~)
 
+	// 1. 사람들 관리 - 사람 이름, 사람 고유번호 id, 사람 마일리지, 사람들 자금
+	Vector<Buyer> buyers = new Vector<>();// 와일드 카드라는 녀석이라고??때에 따라 알아서 바뀌는 거래
+	// 여기서 <타입> ==> Buyer니까 객체의 묶음이 들어오겠구만
+	// Vector에 값을 추가하려면 buyers.add(~~) 이런식!
+	// Vector에 값을 제거하려면 buyers.remove(~~)
+	
+	
+	public boolean addBuyer(Buyer b) {
+		// 여기서 Buyer는 name, money, milage를 포함하고 있는 객체
+		// 하나의 묶음인 거야 이걸 통쨰로 들고다니는 거야
+		boolean result = buyers.add(b);
+		return result;
+	}
+	
+	public void Customers(){
+		for(int i = 0; i < buyers.size(); i++){
+			Buyer result = buyers.get(i);
+			System.out.print(result.name + " ");
+			System.out.print(result.money + " ");
+			System.out.println(result.mileage);
+		}
+		
+	}
+	
+	
 	// 2. 물건들 관리
 	Vector<Product> products = new Vector<>();
+	
+	
 
 	// 3. 구매내역
 	Vector<Sale> sale = new Vector<>();
+
 	
-	public boolean addBuyer(Buyer b) { 
-		//여기서 Buyer는 name, money, milage를 포함하고 있는 객체
-		//하나의 묶음인 거야 이걸 통쨰로 들고다니는 거야
-		buyers.add(b);
-		
-		boolean result = buyers.add(b);
-		return result;
-		
-	}
 }

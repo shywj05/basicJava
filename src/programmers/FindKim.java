@@ -1,14 +1,14 @@
 package programmers;
 
-public class FindKim {
-
-	public static void main(String[] args) {
-		SeoulKim sk = new SeoulKim();
-		String result = sk.solution(new String[] { "Jane", "Kim" });
-		System.out.println(result);
-	}
-
-}
+//public class FindKim {
+//
+//	public static void main(String[] args) {
+//		SeoulKim sk = new SeoulKim();
+//		String result = sk.solution(new String[] { "Jane", "Kim" });
+//		System.out.println(result);
+//	}
+//
+//}
 
 /*
  * String형 배열 seoul의 element중 Kim의 위치 x를 찾아, 
@@ -20,12 +20,12 @@ public class FindKim {
  * Kim은 반드시 seoul 안에 포함되어 있습니다.
  */
 
-class SeoulKim {
-	public String solution(String[] seoul) {
-		String[] result = 
-		
-		String answer = "김서방은 : " + i + "에 있다";
-
-		return answer;
-	}
-}
+//class SeoulKim {
+//	public String solution(String[] seoul) {
+//		String[] result = 
+//		
+//		String answer = "김서방은 : " + i + "에 있다";
+//
+//		return answer;
+//	}
+//}
