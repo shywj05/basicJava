@@ -87,7 +87,37 @@ public class JavaLang_01 {
 			- String 클래스는 인스턴스를 생성할 때 지정된 문자열을 변경할 수 없다.
 			- StringBuffer를 사용하는 것이 좋다.
 			
-			
+ 		
+ 		5. Math클래스
+ 		
+ 		
+ 		6. wrapper클래스 //여러개 클래스의 묶음이다.
+ 			- 객체지향의 개념은 모든 것을 객체로 다루어야 한다.
+ 			- 8가지 기본형은 객체로 다루지 않는다.
+ 			- 때로는 기본형 변수도 객체로 다루어야 하는 경우
+ 				: 매개변수로 객체를 요구할 때
+ 				: 기본형이 아닌 객체로 저장되어야 할 때
+ 			
+ 			boolean     |	Boolean
+ 			char		|	Character ***
+ 			byte		|	Byte
+ 			short		|	Short
+ 			int			|	Integer ***
+ 			long		|	Long
+ 			float		|	Float
+ 			double		|	Double
+ 			
+ 			- 오토박싱 : 기본형 값을 래퍼클래스의 객체로 자동 변환해 주는 것
+ 			- 언박싱 : 래퍼클래스의 객체를 기본형 값으로 변환해 주는 것
+ 			
+ 		7. StringTokenizer클래스
+ 			- 긴 문자열을 지정된 구분자를 기준으로 토큰이라는 여러개의 문자열로 잘라내는데 사용한다.
+ 			- 단, 한 문자의 구분자를 사용할 수 있다.
+ 				
+ 				
+ 				
+ 		
+ 		
 		 */
 		
 		

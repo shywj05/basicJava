@@ -9,9 +9,9 @@ public class ProductTest_01 {
 		 * c의 주소 안에 매개변수 2개가 있는 Computer생성자 인자값을 대입 부모 클레스 안의 인스턴스 초기화 주소값 나머지 다
 		 * 동일
 		 */
-		Computer c = new Computer(80, "좋은컴퓨터");
-		HandPhone h = new HandPhone(500, "좋은핸드폰");
-		Styler s = new Styler(480, "좋은스타일러");
+		Computer c = new Computer(80, "좋은컴퓨터", 100);
+		HandPhone h = new HandPhone(500, "좋은핸드폰", 100);
+		Styler s = new Styler(480, "좋은스타일러", 100);
 		
 		
 		DBClass db = new DBClass();
@@ -19,7 +19,6 @@ public class ProductTest_01 {
 		Buyer customer = new Buyer("손님1", 1000);
 		Buyer customer2 = new Buyer("손님2", 1000);
 		
-		Product stuff = new Product("좋은컴퓨터", 80, 100);
 
 		customer.buy(s);
 		customer.buy(h);
@@ -42,7 +41,6 @@ public class ProductTest_01 {
 		db.addBuyer(customer2);
 		db.customers();
 		
-		db.addProducts(stuff);
 		db.stuff();
 
 		// 메서드를 호출하는 거지 db(주소로 이동). addBuyer(coustomer)(db의 주소안에 있는 매개변수 하나의 매서드)
@@ -79,11 +77,12 @@ class Product {
 		this.price = price;
 		this.name = name;
 		mileage = price / 20;
+		this.mount = mount;
 	}
 }
 
 class Computer extends Product {
-	public Computer(int price, String name) {
+	public Computer(int price, String name, int mount) {
 		super(name, price, mount);
 
 	}
@@ -95,7 +94,7 @@ class Computer extends Product {
 }
 
 class HandPhone extends Product {
-	public HandPhone(int price, String name) {
+	public HandPhone(int price, String name, int mount) {
 		super(name, price, mount);
 	}
 
@@ -107,8 +106,8 @@ class HandPhone extends Product {
 }
 
 class Styler extends Product {
-	public Styler(int price, String name) {
-		super(name, price);
+	public Styler(int price, String name, int mount) {
+		super(name, price, mount);
 	}
 
 	@Override
@@ -123,7 +122,7 @@ class Buyer {
 	int money;
 	int mileage;
 
-	Vector<Product> item = new Vector<Product>();// 구매내역 저장
+	Vector<Product> item = new Vector<Product>();// 손님의 이름, 돈, 마일리지 관련 정보묶음
 
 	public Buyer(String name, int money) {
 		this.name = name;
@@ -271,7 +270,7 @@ class DBClass {
 	
 	
 	public boolean addBuyer(Buyer b) {
-		// 여기서 Buyer는 name, money, milage를 포함하고 있는 객체
+		// 여기서 Buyer는 name, money, mileage를 포함하고 있는 객체
 		// 하나의 묶음인 거야 이걸 통쨰로 들고다니는 거야
 		boolean result = buyers.add(b);
 		return result;
@@ -294,7 +293,7 @@ class DBClass {
 	
 	
 	// 2. 물건들 관리
-	Vector<Product> products = new Vector<>();//백터 만들었으니까..
+	Vector<Product> products = new Vector<>();//물품 이름, 가격, 갯수의 묶음
 	//여기에 프로덕트 넣어야돼 
 	
 	public boolean addProducts(Product p){//메서드로 추가해주고
