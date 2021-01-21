@@ -14,7 +14,6 @@ public class ProductTest_01 {
 		Styler s = new Styler(480, "좋은스타일러", 100);
 		
 		
-		DBClass db = new DBClass();
 		
 		Buyer customer = new Buyer("손님1", 1000);
 		Buyer customer2 = new Buyer("손님2", 1000);
@@ -36,13 +35,17 @@ public class ProductTest_01 {
 
 		// summary
 		customer.summary();
+		DBClass db = new DBClass();
 
 		db.addBuyer(customer);
 		db.addBuyer(customer2);
 		db.customers();
 		
+		db.addProducts(c);
+		db.addProducts(h);
+		db.addProducts(s);
 		db.stuff();
-
+		
 		// 메서드를 호출하는 거지 db(주소로 이동). addBuyer(coustomer)(db의 주소안에 있는 매개변수 하나의 매서드)
 		// 인자값으로 customer을 준 건 타입이 buyer이기 때문에
 
@@ -304,16 +307,13 @@ class DBClass {
 	public void stuff(){//추가된거 가져와서 출력해주고
 		for(int i = 0; i < products.size(); i++){
 			Product result = products.get(i);
-			System.out.println(result.name);
-			System.out.println(result.price);
+			System.out.print(result.name + "  ");
+			System.out.print(result.price + "원  ");
 			//여기에 mount 추가!
+			System.out.println(result.mount+ "개");
 		}
 	}
 	
-	
-	
-	
-
 	// 3. 구매내역
 	Vector<Sale> sale = new Vector<>();
 
