@@ -13,11 +13,13 @@ public class ProductTest_01 {
 		HandPhone h = new HandPhone(500, "좋은핸드폰");
 		Styler s = new Styler(480, "좋은스타일러");
 		
+		
+		DBClass db = new DBClass();
+		
 		Buyer customer = new Buyer("손님1", 1000);
 		Buyer customer2 = new Buyer("손님2", 1000);
 		
-		DBClass db = new DBClass();
-		// 생성자를 콜스택에 로드시켜
+		Product stuff = new Product("좋은컴퓨터", 80, 100);
 
 		customer.buy(s);
 		customer.buy(h);
@@ -38,7 +40,10 @@ public class ProductTest_01 {
 
 		db.addBuyer(customer);
 		db.addBuyer(customer2);
-		db.Customers();
+		db.customers();
+		
+		db.addProducts(stuff);
+		db.stuff();
 
 		// 메서드를 호출하는 거지 db(주소로 이동). addBuyer(coustomer)(db의 주소안에 있는 매개변수 하나의 매서드)
 		// 인자값으로 customer을 준 건 타입이 buyer이기 때문에
@@ -68,8 +73,9 @@ class Product {
 	int price;
 	String name;
 	int mileage;
+	int mount;
 
-	public Product(int price, String name) {
+	public Product(String name, int price, int mount) {
 		this.price = price;
 		this.name = name;
 		mileage = price / 20;
@@ -78,7 +84,7 @@ class Product {
 
 class Computer extends Product {
 	public Computer(int price, String name) {
-		super(price, name);
+		super(name, price, mount);
 
 	}
 
@@ -90,7 +96,7 @@ class Computer extends Product {
 
 class HandPhone extends Product {
 	public HandPhone(int price, String name) {
-		super(price, name);
+		super(name, price, mount);
 	}
 
 	@Override
@@ -102,7 +108,7 @@ class HandPhone extends Product {
 
 class Styler extends Product {
 	public Styler(int price, String name) {
-		super(price, name);
+		super(name, price);
 	}
 
 	@Override
@@ -271,7 +277,12 @@ class DBClass {
 		return result;
 	}
 	
-	public void Customers(){
+//	@Override   ============ 이건 보류 출력문 줄여보자
+//	public String toString() {
+//		return "DBClass [buyers=" + buyers + "]";
+//	}
+
+	public void customers(){
 		for(int i = 0; i < buyers.size(); i++){
 			Buyer result = buyers.get(i);
 			System.out.print(result.name + " ");
@@ -283,7 +294,24 @@ class DBClass {
 	
 	
 	// 2. 물건들 관리
-	Vector<Product> products = new Vector<>();
+	Vector<Product> products = new Vector<>();//백터 만들었으니까..
+	//여기에 프로덕트 넣어야돼 
+	
+	public boolean addProducts(Product p){//메서드로 추가해주고
+		boolean result = products.add(p);
+		return result;
+	}
+	
+	public void stuff(){//추가된거 가져와서 출력해주고
+		for(int i = 0; i < products.size(); i++){
+			Product result = products.get(i);
+			System.out.println(result.name);
+			System.out.println(result.price);
+			//여기에 mount 추가!
+		}
+	}
+	
+	
 	
 	
 

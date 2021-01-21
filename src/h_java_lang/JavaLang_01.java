@@ -61,6 +61,31 @@ public class JavaLang_01 {
 				: 한글 윈도우의 경우 인코딩 CP949방식을 가지고 있다.
 				 	우리는 UTF-8사용 중
 				
+			- String format
+				: 기본형 값을 String으로 변환
+					(1) valurOf();
+						int a = 10;
+						String str = String.valueOf(a);
+						
+					(2) 빈 문자열을 더하는 방법
+						int a = 10;
+						String str = a + "";
+						
+				: String을 기본형 값을 변환
+					(1) wrapper클래스를 이용하는 방법
+						String str = "100"; //"중간에 문자 들어있으면" 예외처리해야된대
+						int a = Integer.parseInt(str);
+						int a = byte.valueOf(str); *******
+						
+					(2) 여러가지 진수
+						String str = "100";
+						int a = Interger.parseInt(str, 4); //str에 있는게 4진수다
+						//트라이 캐치 무조건 같이 다녀야 된다
+						 
+						
+		4. StringBuffer클래스와 StringBuilder클래스
+			- String 클래스는 인스턴스를 생성할 때 지정된 문자열을 변경할 수 없다.
+			- StringBuffer를 사용하는 것이 좋다.
 			
 			
 		 */
