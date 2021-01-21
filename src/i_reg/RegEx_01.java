@@ -54,11 +54,20 @@ public class RegEx_01 {
 		System.out.println(Pattern.matches(regEx01, "ardf"));
 		
 		//2.영문자가 3회 나온다음에 숫자가 나올 수도 없을 수도 무제한 있을 수도 있다.
+		Pattern pat2 = Pattern.compile("[a-zA-Z]{3}[0-9]*");
+		Matcher ma2 = pat2.matcher("ada1");
+		System.out.println(ma2.matches());
 		
 		//3.전화번호 숫자3개-숫자4개-숫자4개 
+		Pattern pat3 = Pattern.compile("\\d{3}-\\d{4}-\\d{4}");
+		Matcher ma3 = pat3.matcher("031-2312-1241");
+		System.out.println(ma3.matches());
 		
 		//4.전화번호 010, 011, 016, 017, 018, 019 앞에 올 수 있고
 		//중간 번호 중 시작번호가 0이 올수 없고 나머지 3개오면되고
+		Pattern pat4 = Pattern.compile("^01(0|1|[6-9])-([^0]\\d{3})-\\d{4}");
+		Matcher ma4 = pat4.matcher("018-1031-1283");
+		System.out.println(ma4.matches());
 		
 		//5.주민번호
 		/*
