@@ -66,7 +66,7 @@ public class RegEx_01 {
 		//4.전화번호 010, 011, 016, 017, 018, 019 앞에 올 수 있고
 		//중간 번호 중 시작번호가 0이 올수 없고 나머지 3개오면되고
 		Pattern pat4 = Pattern.compile("^01(0|1|[6-9])-([^0]\\d{3})-\\d{4}");
-		Matcher ma4 = pat4.matcher("018-1031-1283");
+		Matcher ma4 = pat4.matcher("018-0031-1283");
 		System.out.println(ma4.matches());
 		
 		//5.주민번호
@@ -78,17 +78,60 @@ public class RegEx_01 {
 		 */
 		
 		//6.이메일주소
+		//영문자로 시작해야 한다.
+		//영문자 또는 숫자 특수문자(-_)
+		//@이후에 영문자 또는 숫자가 3~7자
+		//.이후에 영문자 또는 숫자가 2~3자
+		//.kr이 올 수 도 있다.
 		
 		
+		String mail = "^[a-zA-Z]|[0-9](-)(_)@\\w{3,7}.\\w{2,3}(.kr)*";
+		System.out.println(Pattern.matches(mail, "shywj@gmail.com"));
 		
+		//7.
 		
-		
-		
-		
-		
-		
-		
+		String text = "야이 개나리 십장생아 조카신발 같은 경우를 봤나..";
+		String result = filter(text);
+		System.out.println(result);
 		
 	}
+
+	private static String filter(String text) {
+
+		Pattern p = Pattern.compile("개나리|십장생|조카신발|병일신", Pattern.CASE_INSENSITIVE);
+		Matcher m = p.matcher(text);
+		
+		StringBuffer sb = new StringBuffer();
+		
+		
+		while(m.find()){//찾았느냐 찾았으면~
+			String group = m.group();
+			
+			String re = maskword(group);
+			m.appendReplacement(sb, re);
+			
+		}
+		m.appendTail(sb);
+		
+		return sb.toString();
+	}
+	
+		private static String maskword(String group){
+			char[] gg = group.toCharArray();
+			
+			StringBuffer sb = new StringBuffer();
+			
+			for(int i = 0; i < gg.length; i++){
+				if(i==0){
+					sb.append(gg[i]);
+				}else{
+					sb.append("*");
+				}
+			}
+			
+			return sb.toString();
+		}
+	
+	
 
 }
