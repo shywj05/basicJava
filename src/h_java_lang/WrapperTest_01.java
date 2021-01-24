@@ -7,12 +7,12 @@ public class WrapperTest_01 {
 		Integer i1 = new Integer(100);
 		Integer i2 = new Integer(100);
 		
-		System.out.println(i1 == i2);
-		System.out.println(i1.equals(i2));
-		System.out.println(i1); //
+		System.out.println(i1 == i2);//false
+		System.out.println(i1.equals(i2));//false 아니네..왜지
+		System.out.println(i1); //주소가 나오겠찌? 아니네..왜 100이 나오지
 		
-		System.out.println(Integer.MAX_VALUE);
-		System.out.println(Integer.MIN_VALUE);
+		System.out.println(Integer.MAX_VALUE);//
+		System.out.println(Integer.MIN_VALUE);//
 		
 		System.out.println(Integer.SIZE);
 		
@@ -23,7 +23,7 @@ public class WrapperTest_01 {
 		
 		in[0] = new Integer(10);
 		in[1] = new Integer(20);
-		in[2] = 30; //auto-boxing
+		in[2] = 30; //auto-boxing, 
 		
 //		Integer in2 = in[1]; 
 		int in2 = in[1]; //이것도 된다 unBoxing

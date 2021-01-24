@@ -9,7 +9,7 @@ public class ArrayList_01 {
 
 	public static void main(String[] args) {
 
-		List<Integer> list1 = new ArrayList<>();
+		List<Integer> list1 = new ArrayList<>();//타입을 넣어줬군 정수형
 		list1.add(new Integer(5));
 		list1.add(new Integer(2));
 		list1.add(new Integer(3));
