@@ -20,20 +20,20 @@ class Person{
 	Person(long regNo){//매개변수 1개의 생성자
 		this.regNO = regNo;
 	}
-	@Override
-	public boolean equals(Object obj) {
-		if(obj instanceof Person){
-			Person p = (Person)obj;//형변환이 가능하면 새로운 주소를 만들고 넣어주자
-//			this.regNO = p.regNO;
-//			return true;
-			return this.regNO == p.regNO;//이 방법이 더 맞겠다
-			//위에껀 값을 넣어서 억지로 true를 뽑은거고
-			//이 방법은 this.과 p.의 주소안에 있는 값의 비교 결과에 따라 true나 false를 반환하기 때문에
-			//지금은 어떤 주소안에 있는 결과에 대한 비교를 원하기 때문에 이게 더 맞다.
-			
-		}
-		return false;
-	}
+//	@Override
+//	public boolean equals(Object obj) {
+//		if(obj instanceof Person){
+//			Person p = (Person)obj;//형변환이 가능하면 새로운 주소를 만들고 넣어주자
+////			this.regNO = p.regNO;
+////			return true;
+//			return this.regNO == p.regNO;//이 방법이 더 맞겠다
+//			//위에껀 값을 넣어서 억지로 true를 뽑은거고
+//			//이 방법은 this.과 p.의 주소안에 있는 값의 비교 결과에 따라 true나 false를 반환하기 때문에
+//			//지금은 어떤 주소안에 있는 결과에 대한 비교를 원하기 때문에 이게 더 맞다.
+//			
+//		}
+//		return false;
+//	}
 	
 	
 }
